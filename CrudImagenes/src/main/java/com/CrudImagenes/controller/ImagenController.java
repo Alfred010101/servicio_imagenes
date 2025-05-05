@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:5173") 
@@ -50,5 +51,11 @@ public class ImagenController
         imagenRepository.save(imagen);
 
         return ResponseEntity.ok("Imagen guardada con nombre: " + nuevoNombre);
+    }
+
+    @GetMapping("/listar")
+    public List<Imagen> listarImagenes() 
+    {
+        return imagenRepository.findAll();
     }
 }
